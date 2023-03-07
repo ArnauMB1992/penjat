@@ -9,9 +9,8 @@ package miproyecto_;
  * @author ArnauMB
  */
 public class Ex03_Penjat {
-    
     public static void main(String[] args) {
-        final String[] paraules = {"patata","armari","bicicleta","advocat","ascensor","astronauta","autopista","avinguda","bigoti","carretera"};
+        
         final char[][] estatPenjatInicial =
         {
           {' ',' ',' ',' ','_','_','_','_',' ',' ',' ',' '},                                      
@@ -24,39 +23,78 @@ public class Ex03_Penjat {
           {'|',' ',' ',' ',' ','|','_','_','_','_','_',' '},
           {'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|'},
           {'|','_','_','_','_','_','_','_','_','_','_','|'}
-         };        
-        //mostrarEstatPenjat(estatPenjatInicial);
+         };   
         
-            char [][] estatPenjat= new char[estatPenjatInicial.length][estatPenjatInicial[0].length];
-            inicialitzarEstatPenjat(estatPenjatInicial,estatPenjat);
-            int index= (int)(Math.random()*paraules.length);
-            String paraula=paraules[index];
-            int totalErrors=0;
-            int totalEncerts=0;
-            boolean[] lletresEncertades = new boolean[paraula.length()];
-            String lletres="";
-        do{
+        
+        final String[] paraules = {"patata","armari","bicicleta",
+                            "advocat","ascensor","astronauta","autopista",
+                            "avinguda","bigoti","carretera","castanya",
+                            "cervell","civada","cultura","dentista","esquena",
+                            "estrella","formatge","gendre","genoll",
+                            "infermera","internet","maduixa","malaltia",
+                            "maluc","mandarina","maquinista","motocicleta",
+                            "nebot","pastanaga","patinet","perruqueria",
+                            "pissarra","professor","quadrat","taronja",
+                            "tramvia","trapezi","tricicle","violeta"};
+        
+        
+        final int MAXINTENTS = 7;
+        
             
-                    
-        }while(totalEncerts<paraula.length() && totalErrors<MAXIMINTENTS);
+            // Estat gràfic del joc durant la partida
+            char[][] estatPenjat = 
+              new char[estatPenjatInicial.length][estatPenjatInicial[0].length];
+            
+            
+            // Inicialitzar el dibuix del penjat
+            inicialitzarEstatPenjat(estatPenjatInicial,estatPenjat);
+            
+            
+            mostrarEstatPenjat(estatPenjat);
+            
+            // Seleccionar la paraula aleatòriament
+            int index = (int)(Math.random()*paraules.length);
+            String paraula = paraules[index];
+            // Eliminar aquesta línia quan el joc estigui completat
+            paraula = "patata";
+            
+            
+            int totalEncerts = 0,totalErrors = 0;
+            
+            // Estructra de dades (array) per saber quines lletres portem 
+            //encertades            
+            boolean[] lletresEncertades = new boolean[paraula.length()];
+            
+            // Llistat de lletres que hem introduït
+            String lletres = "";
+            
+            do {
+            
+                
+            } while(totalEncerts < paraula.length() && totalErrors < MAXINTENTS);
+        
     }
     
     
     static void mostrarEstatPenjat(char[][] estat) {
-        for(char[]fila : estat){
-            for(char valor : fila){
-                System.out.println(valor);
+        
+        for (char[] fila : estat) {
+            for (char valor : fila) {
+                System.out.print(valor);
             }
             System.out.println("");
         }
+        
     }
     
     static void inicialitzarEstatPenjat(char[][] estatPenjatIni, char[][] estat) {
-        for(int i=0; i<estatPenjatIni.length; i++){
-            for(int j=0; j<estatPenjatIni[0].length; j++){
-                estat[i][j]=estatPenjatIni[i][j];
+    
+        for (int i = 0; i < estatPenjatIni.length; ++i) {
+            for (int j = 0; j < estatPenjatIni[0].length; ++j) {
+                estat[i][j] = estatPenjatIni[i][j];
             }
         }
+        
     }
     
     static void mostrarParaula(String paraula, boolean[] encertades) {
@@ -68,10 +106,14 @@ public class Ex03_Penjat {
     }
     
     static String demanarLletra(String lletres) {
+        
+        return null;
     
     }
     
     static boolean existeixLletra(String lletres, char lletra) {
+        
+        return true;
     
     }
     
@@ -83,3 +125,7 @@ public class Ex03_Penjat {
     
     }
     
+    
+    
+}
+
