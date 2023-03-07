@@ -17,7 +17,7 @@ public class MiProyecto_ {
         // TODO code application logic here
         System.out.println("HOLA MON");
         System.out.println("HOLA MUNDO");
-        System.out.println("PRUEBAS");
+        System.out.println("55555");
     }
     
 }
