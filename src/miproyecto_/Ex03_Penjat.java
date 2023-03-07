@@ -107,7 +107,8 @@ public class Ex03_Penjat {
     
     static String demanarLletra(String lletres) {
         
-        return null;
+      //return null;
+      return null;
     
     }
     
@@ -122,7 +123,7 @@ public class Ex03_Penjat {
     }
     
     static void netejaPantalla() {
-    
+           
     }
     
     
