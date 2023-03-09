@@ -121,7 +121,34 @@ public class Ex03_Penjat {
     }
     
     static void actualitzarEstatPenjat(char[][] penjat,int errors) {
-        
+        switch(errors) {
+        case 0:
+                penjat[2][9]='|';
+                break;
+        case 1:
+                penjat[3][9]='O';
+                break;
+        case 2:
+                penjat[4][9]='|';
+                break;
+        case 3:
+                penjat[4][8]='/';   
+                break;
+        case 4:
+                penjat[4][10]='\\';
+                break;
+        case 5:
+                penjat[5][9]='|';
+                break;
+        case 6:
+                penjat[6][8]='/';
+                break;
+        case 7:
+        default:
+                penjat[6][10]='\\';
+                break;        
+         
+        }
     }
     
     static void netejaPantalla() {
