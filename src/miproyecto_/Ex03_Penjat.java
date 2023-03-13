@@ -48,27 +48,21 @@ public class Ex03_Penjat {
         int i, n = palabra.length(), turnos = 0, totalEncerts = 0;
         char letra = 0, caracter;
         char[] casillas = new char[n];
-        boolean encontrado, repetida;
+        boolean encontrado;
         String letras="";
         for(i=0; i<n; i++)
             casillas[i] = '*';
         mostrarEstatPenjat(penjat);
-        
         do {
             System.out.println("\nOportunitats restants: " + (MAXINTENTS-turnos));
             System.out.print("Paraula: ");
             mostrarParaula(casillas);
             System.out.print("\nLletres: "+letras);
-
             System.out.print("\nIntrodueix lletra: ");
             linea= demanarLletra(linea);
             letra = linea.charAt(0);
             letras+=letra;
-            for (i = 0; i < letras.length(); i++) {
-                if (letras.charAt(i) == letra) {
-                    repetida = true;
-                }
-}
+
             encontrado = false;
             for(i=0; i<n; i++) {
                 caracter = palabra.charAt(i);
@@ -82,10 +76,9 @@ public class Ex03_Penjat {
             }
             
             if(!encontrado) {
+                turnos++;
                 System.out.println("Letra no encontrada.");
                 actualitzarEstatPenjat(penjat,turnos);
-                //if(!repetida)
-                    turnos++;
             }
             
             mostrarEstatPenjat(penjat);
@@ -149,9 +142,10 @@ public class Ex03_Penjat {
                         penjat[5][7]='/';
                         break;
                 case 7:
-                default:
                         penjat[5][9]='\\';
                         break;
+                default:
+                    break;
                 }
     }
     
