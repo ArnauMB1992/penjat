@@ -61,7 +61,6 @@ public class Ex03_Penjat {
             linea= demanarLletra(linea);
             letra = linea.charAt(0);
             letras+=letra;
-
             encontrado = false;
             for(i=0; i<n; i++) {
                 caracter = palabra.charAt(i);
@@ -73,23 +72,19 @@ public class Ex03_Penjat {
                     }
                 }
             }
-            
             if(!encontrado) {
                 turnos++;
                 System.out.println("Letra no encontrada.");
                 actualitzarEstatPenjat(penjat,turnos);
             }
-            
             mostrarEstatPenjat(penjat);
-          
             netejaPantalla();
         } while(turnos<MAXINTENTS&&totalEncerts<n);
         if(totalEncerts==n)
             System.out.println("Felicitats, has guanyat");
         else
             System.out.println("OOOOOoooohhhh! Has perdut!!");
-        System.out.println("La paraula secreta era: " + palabra );
-                            
+        System.out.println("La paraula secreta era: " + palabra );                            
     }
     
     static void mostrarEstatPenjat(char[][] estat) {
@@ -99,21 +94,20 @@ public class Ex03_Penjat {
                 System.out.print(valor);
             }
             System.out.println("");
-        }
-        
+        }  
     }
 
     static void mostrarParaulaEnAsteriscos(char[] casillas) {
-        for(int i=0; i<casillas.length; i++)
-            casillas[i] = '*';
         
+        for(int i=0; i<casillas.length; i++)
+            casillas[i] = '*';  
     }
         
     static void mostrarParaula(char[] casillas) {
         
         for(int i=0; i<casillas.length; i++)
                 System.out.print(" " + casillas[i]);
-        
+       
     }
     
      static String demanarLletra(String linea) {
