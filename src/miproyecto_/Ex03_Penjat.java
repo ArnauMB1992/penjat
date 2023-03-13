@@ -4,16 +4,20 @@
  */
 package miproyecto_;
 
+
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
  * @author ArnauMB
  */
 public class Ex03_Penjat {
+    public static int MAXINTENTS = 8;
+    public static Scanner teclado = new Scanner(System.in);
     public static void main(String[] args) {
         
-        final char[][] estatPenjatInicial =
+                final char[][] penjat =
         {
           {' ',' ',' ',' ','_','_','_','_',' ',' ',' ',' '},                                      
           {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
@@ -25,10 +29,11 @@ public class Ex03_Penjat {
           {'|',' ',' ',' ',' ','|','_','_','_','_','_',' '},
           {'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|'},
           {'|','_','_','_','_','_','_','_','_','_','_','|'}
-         };   
-        
-        
-        final String[] paraules = {"patata","armari","bicicleta",
+        };  
+           
+               
+                
+        String[] palabras = {"patata","armari","bicicleta",
                             "advocat","ascensor","astronauta","autopista",
                             "avinguda","bigoti","carretera","castanya",
                             "cervell","civada","cultura","dentista","esquena",
@@ -39,44 +44,61 @@ public class Ex03_Penjat {
                             "pissarra","professor","quadrat","taronja",
                             "tramvia","trapezi","tricicle","violeta"};
         
+        String linea = null, palabra = palabras[(int) (Math.random()*palabras.length)];
+        int i, n = palabra.length(), turnos = 0, totalEncerts = 0;
+        char letra = 0, caracter;
+        char[] casillas = new char[n];
+        boolean encontrado, repetida;
+        String letras="";
+        for(i=0; i<n; i++)
+            casillas[i] = '*';
+        mostrarEstatPenjat(penjat);
         
-        final int MAXINTENTS = 7;
-        
+        do {
+            System.out.println("\nOportunitats restants: " + (MAXINTENTS-turnos));
+            System.out.print("Paraula: ");
+            mostrarParaula(casillas);
+            System.out.print("\nLletres: "+letras);
+
+            System.out.print("\nIntrodueix lletra: ");
+            linea= demanarLletra(linea);
+            letra = linea.charAt(0);
+            letras+=letra;
+            for (i = 0; i < letras.length(); i++) {
+                if (letras.charAt(i) == letra) {
+                    repetida = true;
+                }
+}
+            encontrado = false;
+            for(i=0; i<n; i++) {
+                caracter = palabra.charAt(i);
+                if(Character.toUpperCase(letra)==Character.toUpperCase(caracter)) {
+                    encontrado = true;
+                    if(casillas[i]=='*') {
+                        casillas[i] = caracter;
+                        totalEncerts++;
+                    }
+                }
+            }
             
-            // Estat gràfic del joc durant la partida
-            char[][] estatPenjat = 
-              new char[estatPenjatInicial.length][estatPenjatInicial[0].length];
+            if(!encontrado) {
+                System.out.println("Letra no encontrada.");
+                actualitzarEstatPenjat(penjat,turnos);
+                //if(!repetida)
+                    turnos++;
+            }
             
-            
-            // Inicialitzar el dibuix del penjat
-            inicialitzarEstatPenjat(estatPenjatInicial,estatPenjat);
-            
-            
-            mostrarEstatPenjat(estatPenjat);
-            
-            // Seleccionar la paraula aleatòriament
-            int index = (int)(Math.random()*paraules.length);
-            String paraula = paraules[index];
-            // Eliminar aquesta línia quan el joc estigui completat
-            paraula = "patata";
-            
-            
-            int totalEncerts = 0,totalErrors = 0;
-            
-            // Estructra de dades (array) per saber quines lletres portem 
-            //encertades            
-            boolean[] lletresEncertades = new boolean[paraula.length()];
-            
-            // Llistat de lletres que hem introduït
-            String lletres = "";
-            
-            do {
-            
-                
-            } while(totalEncerts < paraula.length() && totalErrors < MAXINTENTS);
-        
+            mostrarEstatPenjat(penjat);
+          
+            netejaPantalla();
+        } while(turnos<MAXINTENTS&&totalEncerts<n);
+        if(totalEncerts==n)
+            System.out.println("Felicitats, has guanyat");
+        else
+            System.out.println("OOOOOoooohhhh! Has perdut!!");
+        System.out.println("La paraula secreta era: " + palabra );
+                            
     }
-    
     
     static void mostrarEstatPenjat(char[][] estat) {
         
@@ -88,67 +110,49 @@ public class Ex03_Penjat {
         }
         
     }
-    
-    static void inicialitzarEstatPenjat(char[][] estatPenjatIni, char[][] estat) {
-    
-        for (int i = 0; i < estatPenjatIni.length; ++i) {
-            for (int j = 0; j < estatPenjatIni[0].length; ++j) {
-                estat[i][j] = estatPenjatIni[i][j];
-            }
-        }
+
+    static void mostrarParaula(char[] casillas) {
+        
+        for(int i=0; i<casillas.length; i++)
+                System.out.print(" " + casillas[i]);
         
     }
     
-    static void mostrarParaula(String paraula, boolean[] encertades) {
+     static String demanarLletra(String linea) {
         
-    }
-    
-    static void mostrarLletresIntroduides(String lletres) {
-        
-    }
-    
-    static String demanarLletra(String lletres) {
-        
-      //return null;
-      return null;
-    
-    }
-    
-    static boolean existeixLletra(String lletres, char lletra) {
-        
-        return true;
+        linea = teclado.nextLine();
+        return linea;
     
     }
     
     static void actualitzarEstatPenjat(char[][] penjat,int errors) {
-        switch(errors) {
-        case 0:
-                penjat[2][9]='|';
-                break;
-        case 1:
-                penjat[3][9]='O';
-                break;
-        case 2:
-                penjat[4][9]='|';
-                break;
-        case 3:
-                penjat[4][8]='/';   
-                break;
-        case 4:
-                penjat[4][10]='\\';
-                break;
-        case 5:
-                penjat[5][9]='|';
-                break;
-        case 6:
-                penjat[6][8]='/';
-                break;
-        case 7:
-        default:
-                penjat[6][10]='\\';
-                break;        
-         
-        }
+        switch(errors-1) {
+                case 0:
+                        penjat[1][8]='|';
+                        break;
+                case 1:
+                        penjat[2][8]='O';
+                        break;
+                case 2:
+                        penjat[3][8]='|';
+                        break;
+                case 3:
+                        penjat[3][7]='/';   
+                        break;
+                case 4:
+                        penjat[3][9]='\\';
+                        break;
+                case 5:
+                        penjat[4][8]='|';
+                        break;
+                case 6:
+                        penjat[5][7]='/';
+                        break;
+                case 7:
+                default:
+                        penjat[5][9]='\\';
+                        break;
+                }
     }
     
     static void netejaPantalla() {
@@ -162,8 +166,4 @@ public class Ex03_Penjat {
   		}
             } catch (IOException | InterruptedException ex) {}
     }
-    
-    
-    
 }
-
