@@ -4,7 +4,6 @@
  */
 package miproyecto_;
 
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -17,22 +16,19 @@ public class Ex03_Penjat {
     public static Scanner teclado = new Scanner(System.in);
     public static void main(String[] args) {
         
-                final char[][] penjat =
-        {
-          {' ',' ',' ',' ','_','_','_','_',' ',' ',' ',' '},                                      
-          {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
-          {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
-          {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
-          {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
-          {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
-          {' ','_','_','|','_',' ',' ',' ',' ',' ',' ',' '},                                      
-          {'|',' ',' ',' ',' ','|','_','_','_','_','_',' '},
-          {'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|'},
-          {'|','_','_','_','_','_','_','_','_','_','_','|'}
-        };  
-           
-               
-                
+        final char[][] penjat = {
+                                {' ',' ',' ',' ','_','_','_','_',' ',' ',' ',' '},                                      
+                                {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
+                                {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
+                                {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
+                                {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
+                                {' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' '},
+                                {' ','_','_','|','_',' ',' ',' ',' ',' ',' ',' '},                                      
+                                {'|',' ',' ',' ',' ','|','_','_','_','_','_',' '},
+                                {'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|'},
+                                {'|','_','_','_','_','_','_','_','_','_','_','|'}
+                                };  
+   
         String[] palabras = {"patata","armari","bicicleta",
                             "advocat","ascensor","astronauta","autopista",
                             "avinguda","bigoti","carretera","castanya",
@@ -106,15 +102,13 @@ public class Ex03_Penjat {
     static void mostrarParaula(char[] casillas) {
         
         for(int i=0; i<casillas.length; i++)
-                System.out.print(" " + casillas[i]);
-       
+                System.out.print(" " + casillas[i]);   
     }
     
      static String demanarLletra(String linea) {
         
         linea = teclado.nextLine();
         return linea;
-    
     }
     
     static void actualitzarEstatPenjat(char[][] penjat,int errors) {
