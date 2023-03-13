@@ -41,8 +41,8 @@ public class Ex03_Penjat {
                             "tramvia","trapezi","tricicle","violeta"};
         
         String linea = null, palabra = palabras[(int) (Math.random()*palabras.length)];
-        int i, n = palabra.length(), turnos = 0, totalEncerts = 0;
-        char letra = 0, caracter;
+        int n = palabra.length(), turnos = 0, totalEncerts = 0;
+        char letra = 0;
         char[] casillas = new char[n];
         boolean encontrado;
         String letras="";
@@ -62,17 +62,8 @@ public class Ex03_Penjat {
                 }
             } while (letras.contains(String.valueOf(letra)));
             letras+=letra;
-            encontrado = false;
-            for(i=0; i<n; i++) {
-                caracter = palabra.charAt(i);
-                if(Character.toUpperCase(letra)==Character.toUpperCase(caracter)) {
-                    encontrado = true;
-                    if(casillas[i]=='*') {
-                        casillas[i] = caracter;
-                        totalEncerts++;
-                    }
-                }
-            }
+            totalEncerts= totalEncerts(letra,palabra,casillas);
+            encontrado=buscarLetraEnPalabra(letra, palabra, casillas);
             if(!encontrado) {
                 turnos++;
                 System.out.println("Letra no encontrada.");
@@ -87,7 +78,34 @@ public class Ex03_Penjat {
             System.out.println("OOOOOoooohhhh! Has perdut!!");
         System.out.println("La paraula secreta era: " + palabra );                            
     }
+    public static int totalEncerts(char letra, String palabra, char[] casillas) {
+    int totalEncerts = 0;
+    int n = palabra.length();
+    for (int i = 0; i < n; i++) {
+        char caracter = palabra.charAt(i);
+        if (Character.toUpperCase(letra) == Character.toUpperCase(caracter)) {
+            if (casillas[i] == '*') {
+                totalEncerts++;
+            }
+        }
+    }
+    return totalEncerts;
+}
+    public static boolean buscarLetraEnPalabra(char letra, String palabra, char[] casillas) {
     
+    boolean encontrado = false;
+    int n = palabra.length();
+    for (int i = 0; i < n; i++) {
+        char caracter = palabra.charAt(i);
+        if (Character.toUpperCase(letra) == Character.toUpperCase(caracter)) {
+            encontrado = true;
+            if (casillas[i] == '*') {
+                casillas[i] = caracter;
+            }
+        }
+    }
+    return encontrado;
+}
     static void mostrarEstatPenjat(char[][] estat) {
         
         for (char[] fila : estat) {
