@@ -53,9 +53,14 @@ public class Ex03_Penjat {
             System.out.print("Paraula: ");
             mostrarParaula(casillas);
             System.out.print("\nLletres: "+letras);
-            System.out.print("\nIntrodueix lletra: ");
-            linea= demanarLletra(linea);
-            letra = linea.charAt(0);
+            do{
+                System.out.print("\nIntrodueix lletra: ");
+                linea= demanarLletra(linea);
+                letra = linea.charAt(0);
+                if (letras.contains(String.valueOf(letra))) {
+                System.out.print("Lletra repetida! Si us plau, introdueix una lletra nova.");
+                }
+            } while (letras.contains(String.valueOf(letra)));
             letras+=letra;
             encontrado = false;
             for(i=0; i<n; i++) {
