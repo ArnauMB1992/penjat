@@ -50,8 +50,7 @@ public class Ex03_Penjat {
         char[] casillas = new char[n];
         boolean encontrado;
         String letras="";
-        for(i=0; i<n; i++)
-            casillas[i] = '*';
+        mostrarParaulaEnAsteriscos(casillas);
         mostrarEstatPenjat(penjat);
         do {
             System.out.println("\nOportunitats restants: " + (MAXINTENTS-turnos));
@@ -104,6 +103,12 @@ public class Ex03_Penjat {
         
     }
 
+    static void mostrarParaulaEnAsteriscos(char[] casillas) {
+        for(int i=0; i<casillas.length; i++)
+            casillas[i] = '*';
+        
+    }
+        
     static void mostrarParaula(char[] casillas) {
         
         for(int i=0; i<casillas.length; i++)
